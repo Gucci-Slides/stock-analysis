@@ -1,0 +1,4 @@
+pandas
+yfinance
+opensearch-py
+boto3

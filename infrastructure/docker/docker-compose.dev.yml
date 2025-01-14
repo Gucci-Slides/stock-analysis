@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  data-collector:
+    build:
+      context: ../../services/data_collector  # Updated path
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../services/data_collector/src:/app/src  # Updated path
+    environment:
+      - DEBUG=true
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379"
